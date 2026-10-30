@@ -1,0 +1,545 @@
+/* ==========================================================================
+   Mening Profilim - Asosiy Stil Fayli (CSS)
+   Muallif: Antigravity AI
+   Dizayn uslubi: Zamonaviy Glassmorphism & Neon Glow (Dark/Light rejimi)
+   ========================================================================== */
+
+/* 1. O'zgaruvchilar (CSS Variables / Colors) */
+:root {
+  /* To'q ranglar mavzusi (Default: Dark Mode) */
+  --bg-primary: #0a0d14;
+  --bg-secondary: #121824;
+  --card-bg: rgba(23, 30, 46, 0.7);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-hover-border: rgba(99, 102, 241, 0.4);
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  --accent-color: #6366f1;
+  --accent-hover: #4f46e5;
+  --accent-glow: rgba(99, 102, 241, 0.3);
+
+  --success-color: #10b981;
+  --success-glow: rgba(16, 185, 129, 0.4);
+
+  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+}
+
+/* Och ranglar mavzusi (Light Mode) */
+[data-theme="light"] {
+  --bg-primary: #f1f5f9;
+  --bg-secondary: #e2e8f0;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-hover-border: rgba(99, 102, 241, 0.5);
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+
+  --accent-color: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-glow: rgba(79, 70, 229, 0.2);
+
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+/* 2. Asosiy Qayta Sozlash (Reset) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 30px 16px;
+  position: relative;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 3. Orqa Fon Effektlari (Ambient Glows) */
+.bg-glow {
+  position: fixed;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.45;
+  transition: var(--transition);
+}
+
+.glow-1 {
+  top: -100px;
+  left: -100px;
+  background: radial-gradient(circle, #6366f1 0%, rgba(99, 102, 241, 0) 70%);
+}
+
+.glow-2 {
+  bottom: -100px;
+  right: -100px;
+  background: radial-gradient(circle, #ec4899 0%, rgba(236, 72, 153, 0) 70%);
+}
+
+/* 4. Asosiy Konteyner */
+.container {
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  z-index: 1;
+}
+
+/* 5. Yuqori Navigatsiya */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background-color: var(--success-color);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--success-glow);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.7;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.status-text {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.top-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.95rem;
+}
+
+.icon-btn:hover {
+  background: var(--accent-color);
+  color: #ffffff;
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--accent-glow);
+}
+
+/* 6. Profil Karta (Hero) */
+.profile-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.avatar-wrapper {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  margin-bottom: 18px;
+}
+
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--accent-color);
+  box-shadow: 0 8px 24px var(--accent-glow);
+  transition: transform 0.4s ease;
+}
+
+.profile-avatar:hover {
+  transform: scale(1.05) rotate(3deg);
+}
+
+.verified-badge {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 26px;
+  height: 26px;
+  background-color: var(--accent-color);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  border: 2px solid var(--bg-primary);
+}
+
+.profile-name {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  color: var(--text-primary);
+}
+
+.profile-tagline {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--accent-color);
+  margin-bottom: 16px;
+}
+
+.about-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin-bottom: 20px;
+}
+
+.about-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* Qiziqishlar / Teglar */
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+}
+
+.tag:hover {
+  border-color: var(--accent-color);
+  color: var(--text-primary);
+  background: rgba(99, 102, 241, 0.1);
+  transform: translateY(-2px);
+}
+
+/* 7. Filtr Tablari */
+.links-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.category-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.tab-btn {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.tab-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-color);
+}
+
+.tab-btn.active {
+  background: var(--accent-color);
+  color: #ffffff;
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 14px var(--accent-glow);
+}
+
+/* 8. Havolalar To'plami (Link Cards) */
+.links-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.link-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--card-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.link-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: transparent;
+  transition: var(--transition);
+}
+
+.link-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: var(--card-hover-border);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Har bir brendning maxsus ranglari */
+.link-card[data-brand="telegram"]:hover { border-color: #229ED9; }
+.link-card[data-brand="telegram"]::before { background: #229ED9; }
+.link-card[data-brand="telegram"] .link-icon-box { color: #229ED9; background: rgba(34, 158, 217, 0.12); }
+
+.link-card[data-brand="instagram"]:hover { border-color: #e1306c; }
+.link-card[data-brand="instagram"]::before { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.link-card[data-brand="instagram"] .link-icon-box { color: #e1306c; background: rgba(225, 48, 108, 0.12); }
+
+.link-card[data-brand="youtube"]:hover { border-color: #ff0000; }
+.link-card[data-brand="youtube"]::before { background: #ff0000; }
+.link-card[data-brand="youtube"] .link-icon-box { color: #ff0000; background: rgba(255, 0, 0, 0.12); }
+
+.link-card[data-brand="steam"]:hover { border-color: #66c0f4; }
+.link-card[data-brand="steam"]::before { background: #66c0f4; }
+.link-card[data-brand="steam"] .link-icon-box { color: #66c0f4; background: rgba(102, 192, 244, 0.12); }
+
+.link-card[data-brand="github"]:hover { border-color: #f0f6fc; }
+.link-card[data-brand="github"]::before { background: #94a3b8; }
+.link-card[data-brand="github"] .link-icon-box { color: var(--text-primary); background: rgba(255, 255, 255, 0.1); }
+
+.link-card[data-brand="discord"]:hover { border-color: #5865F2; }
+.link-card[data-brand="discord"]::before { background: #5865F2; }
+.link-card[data-brand="discord"] .link-icon-box { color: #5865F2; background: rgba(88, 101, 242, 0.12); }
+
+.link-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.link-card:hover .link-icon-box {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.link-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.link-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.link-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.link-action {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+.link-card:hover .link-action {
+  color: var(--text-primary);
+  transform: translate(2px, -2px);
+}
+
+/* Yashirish (Filtr uchun) */
+.link-card.hidden {
+  display: none !important;
+}
+
+/* 9. Pastki Qism (Footer) */
+.footer {
+  text-align: center;
+  padding: 16px 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-subtext {
+  font-size: 0.78rem;
+  opacity: 0.8;
+}
+
+/* 10. Bildirishnoma (Toast Alert) */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--accent-color);
+  color: var(--text-primary);
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: var(--shadow-lg), 0 0 20px var(--accent-glow);
+  font-size: 0.9rem;
+  font-weight: 600;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.toast i {
+  color: var(--success-color);
+  font-size: 1.1rem;
+}
+
+/* 11. Mobil moslashuvchanlik (Responsive) */
+@media (max-width: 480px) {
+  body {
+    padding: 16px 12px;
+  }
+
+  .profile-card {
+    padding: 24px 16px;
+  }
+
+  .profile-name {
+    font-size: 1.4rem;
+  }
+
+  .link-card {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .link-icon-box {
+    width: 42px;
+    height: 42px;
+    font-size: 1.3rem;
+  }
+}
