@@ -3,191 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mamasoliev Abduqaxxxor Ismoiljon o'g'li</title>
-  
-  <!-- Google Fonts: Plus Jakarta Sans -->
+  <title>Abduqaxxor Mamasoliev</title>
+  <meta name="description" content="Abduqaxxor Mamasoliev — dasturiy injiniring talabasi. Barcha havolalar bir joyda.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <!-- Asosiy Stil Fayli -->
   <link rel="stylesheet" href="style.css">
+  <script>
+    // Mavzuni sahifa chizilishidan oldin o'rnatamiz (miltillashni oldini oladi)
+    try {
+      var t = localStorage.getItem('user-theme') ||
+        (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
 </head>
 <body>
+  <main class="page">
 
-  <!-- Orqa fon nurlari (Ambient Glows) -->
-  <div class="bg-glow glow-1"></div>
-  <div class="bg-glow glow-2"></div>
-
-  <!-- Asosiy Konteyner -->
-  <main class="container">
-
-    <!-- Yuqori Boshqaruv Paneli (Mavzu o'zgartirish va Havolani nusxalash) -->
-    <header class="top-nav">
-      <div class="status-indicator">
-        <span class="status-dot"></span>
-        <span class="status-text" id="status-greeting">Salom, xush kelibsiz!</span>
-      </div>
-      <div class="top-actions">
-        <button id="copy-site-btn" class="icon-btn" title="Sayt havolasini nusxalash" aria-label="Havolani nusxalash">
-          <i class="fa-solid fa-share-nodes"></i>
+    <header class="bar">
+      <span class="greeting"><span class="dot"></span><span id="status-greeting">Xush kelibsiz</span></span>
+      <div class="bar-actions">
+        <button id="copy-site-btn" class="icon-btn" aria-label="Sayt havolasini nusxalash" title="Havolani nusxalash">
+          <i class="fa-solid fa-link"></i>
         </button>
-        <button id="theme-toggle-btn" class="icon-btn" title="Mavzuni o'zgartirish" aria-label="Mavzuni o'zgartirish">
+        <button id="theme-toggle-btn" class="icon-btn" aria-label="Mavzuni almashtirish" title="Mavzuni almashtirish">
           <i class="fa-solid fa-moon"></i>
         </button>
       </div>
     </header>
 
-    <!-- Profil Bosh qismi (Hero Section) -->
-    <section class="profile-card">
-      <div class="avatar-wrapper">
-        <!-- O'zingizning rasmingizni images/avatar.jpg qilib almashtirishingiz mumkin -->
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80" 
-             alt="Profil rasmi" 
-             class="profile-avatar" 
-             id="user-avatar">
-        <div class="verified-badge" title="Tasdiqlangan">
-          <i class="fa-solid fa-check"></i>
-        </div>
-      </div>
-
-      <h1 class="profile-name">Ismingiz Familiyangiz</h1>
-      <p class="profile-tagline">Web Developer & Gamer | Texnologiyalar ishqibozi 🚀</p>
-
-      <!-- Qisqa bio / ma'lumot -->
-      <div class="about-box">
-        <p class="about-text">
-          Salom! Men yangi texnologiyalarni o'rganish, zamonaviy veb-loyihalar yaratish va bo'sh vaqtimda o'yinlar o'ynashni yoqtiraman. 
-          Quyidagi havolalar orqali men bilan bog'lanishingiz yoki ijtimoiy sahifalarimni kuzatishingiz mumkin.
-        </p>
-      </div>
-
-      <!-- Qiziqishlar / Teglar -->
-      <div class="tags-container">
-        <span class="tag"><i class="fa-brands fa-html5"></i> Web Coding</span>
-        <span class="tag"><i class="fa-solid fa-gamepad"></i> Steam Gaming</span>
-        <span class="tag"><i class="fa-solid fa-code"></i> JavaScript</span>
-        <span class="tag"><i class="fa-solid fa-music"></i> Musiqa</span>
-      </div>
+    <section class="intro">
+      <div class="monogram" aria-hidden="true">A</div>
+      <h1>Abduqaxxor<br>Mamasoliev</h1>
+      <p class="role">Dasturiy injiniring talabasi. Veb-loyihalar yarataman, bo'sh vaqtimda o'yin o'ynayman.</p>
+      <ul class="chips">
+        <li>Web</li>
+        <li>JavaScript</li>
+        <li>Steam</li>
+        <li>Musiqa</li>
+      </ul>
     </section>
 
-    <!-- Havolalar Bo'limi (Filters) -->
-    <section class="links-section">
-      <div class="category-tabs">
-        <button class="tab-btn active" data-filter="all">Barchasi</button>
-        <button class="tab-btn" data-filter="social">Ijtimoiy</button>
-        <button class="tab-btn" data-filter="gaming">Gaming</button>
-        <button class="tab-btn" data-filter="contact">Bog'lanish</button>
+    <section class="links-section" aria-label="Havolalar">
+      <div class="tabs" role="group" aria-label="Toifalar">
+        <button class="tab active" data-filter="all">Barchasi</button>
+        <button class="tab" data-filter="social">Ijtimoiy</button>
+        <button class="tab" data-filter="gaming">Gaming</button>
+        <button class="tab" data-filter="contact">Bog'lanish</button>
       </div>
 
-      <!-- Havolalar Ro'yxati -->
-      <div class="links-grid" id="links-container">
-
-        <!-- Telegram -->
-        <a href="https://t.me/username" target="_blank" rel="noopener noreferrer" class="link-card social contact" data-brand="telegram">
-          <div class="link-icon-box">
+      <ul class="links" id="links-container">
+        <li data-groups="social contact">
+          <a class="link" href="https://t.me/Rudius_13" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-telegram"></i>
-          </div>
-          <div class="link-info">
-            <h3 class="link-title">Telegram</h3>
-            <span class="link-desc">@username • Shaxsiy chat va kanal</span>
-          </div>
-          <div class="link-action">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </div>
-        </a>
-
-        <!-- Instagram -->
-        <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer" class="link-card social" data-brand="instagram">
-          <div class="link-icon-box">
+            <span class="link-text"><b>Telegram</b><small>@Rudius_13</small></span>
+            <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+          </a>
+        </li>
+        <li data-groups="social">
+          <a class="link" href="https://www.instagram.com/parfx13/" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-instagram"></i>
-          </div>
-          <div class="link-info">
-            <h3 class="link-title">Instagram</h3>
-            <span class="link-desc">@username • Kundalik fotosuratlar va stories</span>
-          </div>
-          <div class="link-action">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </div>
-        </a>
-
-        <!-- YouTube -->
-        <a href="https://youtube.com/@username" target="_blank" rel="noopener noreferrer" class="link-card social" data-brand="youtube">
-          <div class="link-icon-box">
+            <span class="link-text"><b>Instagram</b><small>@parfx13</small></span>
+            <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+          </a>
+        </li>
+        <li data-groups="social">
+          <a class="link" href="https://www.youtube.com/@PARFX_CS2" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-youtube"></i>
-          </div>
-          <div class="link-info">
-            <h3 class="link-title">YouTube</h3>
-            <span class="link-desc">@username • Videolar va strimlar</span>
-          </div>
-          <div class="link-action">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </div>
-        </a>
-
-        <!-- Steam -->
-        <a href="https://steamcommunity.com/id/username" target="_blank" rel="noopener noreferrer" class="link-card gaming" data-brand="steam">
-          <div class="link-icon-box">
-            <i class="fa-brands fa-steam"></i>
-          </div>
-          <div class="link-info">
-            <h3 class="link-title">Steam</h3>
-            <span class="link-desc">Steam Profilim • Do'stlar bilan o'yinlar</span>
-          </div>
-          <div class="link-action">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </div>
-        </a>
-
-        <!-- GitHub -->
-        <a href="https://github.com/username" target="_blank" rel="noopener noreferrer" class="link-card social contact" data-brand="github">
-          <div class="link-icon-box">
+            <span class="link-text"><b>YouTube</b><small>@PARFX_CS2</small></span>
+            <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+          </a>
+        </li>
+        <li data-groups="social contact">
+          <a class="link" href="https://github.com/PARFX-codeing" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-github"></i>
-          </div>
-          <div class="link-info">
-            <h3 class="link-title">GitHub</h3>
-            <span class="link-desc">Repozitoriylar va ochiq kodli loyihalar</span>
-          </div>
-          <div class="link-action">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </div>
-        </a>
-
-        <!-- Discord -->
-        <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="link-card gaming contact" data-brand="discord">
-          <div class="link-icon-box">
+            <span class="link-text"><b>GitHub</b><small>PARFX-codeing</small></span>
+            <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+          </a>
+        </li>
+        <li data-groups="gaming">
+          <a class="link" href="https://steamcommunity.com/profiles/76561199806455115/" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-steam"></i>
+            <span class="link-text"><b>Steam</b><small>Profilim va o'yinlarim</small></span>
+            <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+          </a>
+        </li>
+        <li data-groups="gaming contact">
+          <a class="link" href="https://discord.com" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-discord"></i>
-          </div>
-          <div class="link-info">
-            <h3 class="link-title">Discord</h3>
-            <span class="link-desc">username#0000 • Voice & Chat</span>
-          </div>
-          <div class="link-action">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </div>
-        </a>
-
-      </div>
+            <span class="link-text"><b>Discord</b><small>username</small></span>
+            <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+          </a>
+        </li>
+      </ul>
     </section>
 
-    <!-- Pastki Qism (Footer) -->
-    <footer class="footer">
-      <p>© <span id="current-year">2026</span> • Barcha huquqlar himoyalangan.</p>
-      <p class="footer-subtext">HTML, CSS va JS bilan yaratildi ❤️</p>
-    </footer>
-
+    <footer class="footer">© <span id="current-year">2026</span> Abduqaxxor Mamasoliev</footer>
   </main>
 
-  <!-- Bildirishnoma (Toast Alert) -->
-  <div id="toast" class="toast">
-    <i class="fa-solid fa-circle-check"></i>
-    <span id="toast-message">Havola nusxalandi!</span>
-  </div>
-
-  <!-- JavaScript Fayli -->
+  <div id="toast" class="toast" role="status" aria-live="polite"><span id="toast-message"></span></div>
   <script src="script.js"></script>
 </body>
 </html>
